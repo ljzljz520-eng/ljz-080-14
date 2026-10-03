@@ -1,0 +1,71 @@
+@import './theme.less';
+
+body {
+  margin: 0;
+  background: @bg-page;
+  color: @text-main;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+.page-wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 20px 24px 48px;
+}
+
+.section-title {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 22px 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &::before {
+    content: '';
+    width: 4px;
+    height: 16px;
+    border-radius: 2px;
+    background: @brand;
+  }
+}
+
+.card-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+}
+
+.glass-card {
+  background: #fff;
+  border-radius: @card-radius;
+  border: 1px solid @border;
+  box-shadow: 0 2px 10px rgba(31, 111, 97, 0.05);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 600;
+
+  &.pill-critical { background: #fdeceb; color: @critical; }
+  &.pill-warning { background: #fdf3e3; color: #c97c14; }
+  &.pill-info { background: #eaf1fe; color: @info; }
+  &.pill-ok { background: @brand-light; color: @brand-dark; }
+  &.pill-muted { background: #f1f3f3; color: @text-sub; }
+}
+
+.muted { color: @text-sub; }
+.strong-num { font-variant-numeric: tabular-nums; font-weight: 700; }
+
+.empty-block {
+  text-align: center;
+  color: @text-sub;
+  padding: 40px 0;
+  font-size: 14px;
+}

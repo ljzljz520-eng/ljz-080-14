@@ -1,35 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.less'
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
+import PcApp from './pc/PcApp';
+import H5App from './h5/H5App';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+/**
+ * 单应用双入口（开发环境统一预览）：
+ *  #/pc/*    管家管理端（PC，antd）
+ *  #/h5/*    移动门户（护工端 / 家属端，antd-mobile）
+ * 构建产物分别输出 pc.html / h5.html（见 vite.config.ts）。
+ */
+export default function App() {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <HashRouter>
+      <Routes>
+        <Route path="/pc/*" element={<PcApp />} />
+        <Route path="/h5/*" element={<H5App />} />
+        <Route path="*" element={<Navigate to="/pc/dashboard" replace />} />
+      </Routes>
+    </HashRouter>
+  );
 }
-
-export default App
