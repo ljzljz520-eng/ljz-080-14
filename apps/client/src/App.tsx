@@ -1,35 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.less'
+import { ConfigProvider } from 'antd';
+import zhCN from 'antd/locale/zh_CN';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import AdminLayout from './admin/AdminLayout';
+import ChecksPage from './admin/pages/ChecksPage';
+import DashboardPage from './admin/pages/DashboardPage';
+import EldersPage from './admin/pages/EldersPage';
+import ObservationsPage from './admin/pages/ObservationsPage';
+import FamilyApp from './family/FamilyApp';
+import EntryPage from './EntryPage';
+import './App.less';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <ConfigProvider locale={zhCN} theme={{ token: { colorPrimary: '#2f6f4f' } }}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<EntryPage />} />
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<Navigate to="/admin/dashboard" replace />} />
+            <Route path="dashboard" element={<DashboardPage />} />
+            <Route path="elders" element={<EldersPage />} />
+            <Route path="checks" element={<ChecksPage />} />
+            <Route path="observations" element={<ObservationsPage />} />
+          </Route>
+          <Route path="/family/*" element={<FamilyApp />} />
+        </Routes>
+      </BrowserRouter>
+    </ConfigProvider>
+  );
 }
-
-export default App

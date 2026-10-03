@@ -1,20 +1,93 @@
-@primary-color: #1890ff;
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-  
-  &:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  
-  &.react:hover {
-    filter: drop-shadow(0 0 2em #61dafbaa);
-  }
+.entry-page {
+  min-height: 100vh;
+  padding: 48px 24px;
+  background: linear-gradient(160deg, #f2f7f3 0%, #e3efe7 100%);
 }
 
-h1 {
-    color: @primary-color;
+.entry-hero {
+  text-align: center;
+  padding: 40px 24px 56px;
+  margin: -48px -24px 40px;
+  background: linear-gradient(135deg, #2f6f4f 0%, #4d9078 100%);
+  border-radius: 0 0 32px 32px;
+}
+
+.entry-card {
+  text-align: center;
+  border-radius: 16px;
+  min-height: 220px;
+  box-shadow: 0 4px 16px rgba(47, 111, 79, 0.08);
+}
+
+// ---------- 管理端 ----------
+.admin-logo {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.admin-header {
+  background: #fff;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  z-index: 1;
+}
+
+.admin-content {
+  padding: 24px;
+  overflow: auto;
+}
+
+.stat-card {
+  border-radius: 12px;
+}
+
+// ---------- 家属端 H5 ----------
+.family-shell {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: #f5f7f6;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.08);
+}
+
+.family-body {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 60px;
+}
+
+.family-hero {
+  background: linear-gradient(135deg, #2f6f4f 0%, #4d9078 100%);
+  color: #fff;
+  padding: 20px 16px 28px;
+  border-radius: 0 0 20px 20px;
+}
+
+.family-tabbar {
+  position: sticky;
+  bottom: 0;
+  background: #fff;
+  border-top: 1px solid #eee;
+}
+
+.med-card {
+  margin: 12px;
+  border-radius: 12px;
+}
+
+.visit-photo {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
 }
